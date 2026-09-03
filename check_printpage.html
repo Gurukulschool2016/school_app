@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #div_page{
+        width: 100%;
+        border: 1px solid black;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 10px;
+        background-color: aquamarine;
+        box-sizing: border-box;
+    }
+    @media print{
+
+        printing-mode *{
+            visibility: hidden;
+        }
+        .printing-mode #div_page          
+        {
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        
+@page{
+    size: A4 portrait;
+    margin-top:10px;
+}
+ .document-title, 
+  .print-date, 
+  header, 
+  footer {
+    display: none !important;
+  }
+    }
+
+
+</style>
+<body>
+
+    <div id="div_page">
+        <h4>Gurukul school</h4>
+        <table>
+            <tr>
+                <td>name</td>
+                 <td>name</td>
+                   <td>name</td>
+                 <td>name</td>
+                   <td>name</td>
+                 <td>name</td>
+            </tr>
+              <tr>
+                <td>name</td>
+                 <td>name</td>
+                   <td>name</td>
+                 <td>name</td>
+                   <td>name</td>
+                 <td>name</td>
+            </tr>
+              <tr>
+                <td>name</td>
+                 <td>name</td>
+                   <td>name</td>
+                 <td>name</td>
+                   <td>name</td>
+                 <td>name</td>
+            </tr>
+              <tr>
+                <td>name</td>
+                 <td>name</td>
+                   <td>name</td>
+                 <td>name</td>
+                   <td>name</td>
+                 <td>name</td>
+            </tr>
+        </table>
+    </div>
+    <p>this sectin for print</p>
+    <button type="button" id="btn" onclick="print_page()">print</button>
+
+    <script>
+        document.getElementById('btn').addEventListener('click',()=>{
+
+            document.body.classList.add('printing-mode')
+           window.print()
+             document.body.classList.remove('printing-mode')
+        })
+    </script>
+</body>
+</html>

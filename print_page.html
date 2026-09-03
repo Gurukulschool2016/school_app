@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Registration Details - Print</title>
+
+<style>
+</style>
+</head>
+
+<body>
+<!-- 
+<button class="print-btn" onclick="window.print()">
+    🖨 Print Student Details
+</button> -->
+
+<div class="page">
+
+    <!-- School Header -->
+     <span>Udise No: 9631300404</span>
+    <div class="school-header">
+        <div class="school-logo">
+           <img src="./static/image/Gurukul_Logo.png" width="50">
+        </div>
+
+        <div class="school-info">
+            <h1>GURUKUL SR.SEC.SCHOOL</h1>
+            <p>Affiliatin No:641/5210-13/2018-19</p>
+            <p>Agarsanda Garwar Road,Ballia,277001,Uttar Pradesh</p>
+            <p>Phone: 8429806040 |www.gurukulschoolballia.in| Email: info@gurukulschoolballia.in</p>
+        </div>
+
+    </div>
+
+    <div class="document-title">
+        <span>STUDENT REGISTRATION DETAILS</span>
+    </div>
+
+    <!-- Registration Information -->
+    <div class="registration-row">
+        <div><strong>Registration No:</strong> <sapn id="std_reg">123456</sapn></div>
+        <!-- <div><strong>Date:</strong> 26/08/2026</div> -->
+    </div>
+
+    <!-- Student Details -->
+    <div class="section-title">
+        1. STUDENT INFORMATION
+    </div>
+
+    <table>
+        <tr>
+            <td class="label">Student Name</td>
+            <td colspan="2" id="std_name">Rahul Kumar</td>
+            <td rowspan="5" class="photo-cell">
+                <div class="photo">
+                   <img src="./static/image/Gurukul_Logo.jpg" width="100%">
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="label" >Date of Birth</td>
+            <td id="dob">15/06/2012</td>
+            <td><strong>Gender:</strong><span id="gender">Male</span></td>
+        </tr>
+
+        <tr>
+            <td class="label">Class</td>
+            <td id="std_class">VIII</td>
+            <td><strong>Section:</strong> A</td>
+        </tr>
+
+        <tr>
+            <td class="label">Admission No.</td>
+            <td id="std_adm_no">ADM-2026-1025</td>
+            <td><strong>Roll No:</strong><sapn id="roll_no">15</sapn></td>
+        </tr>
+
+        <tr>
+            <td class="label">Blood Group</td>
+            <td id="bld_grp">B+</td>
+            <td><strong>Nationality:</strong> Indian</td>
+        </tr>
+    </table>
+
+    <!-- Parent Details -->
+    <div class="section-title">
+        2. PARENT / GUARDIAN INFORMATION
+    </div>
+
+    <table>
+        <tr>
+            <td class="label">Father's Name</td>
+            <td id="father_name">Mr. Raj Kumar</td>
+        </tr>
+
+        <tr>
+            <td class="label">Mother's Name</td>
+            <td id="mother_name">Mrs. Sunita Kumar</td>
+        </tr>
+       <tr>
+            <td class="label">Mobile Number</td>
+            <td id="mobile_no">9876543210</td>
+        </tr>
+         <tr>
+            <td class="label">Whats app Number</td>
+            <td id="whatsapp_no">9876543210</td>
+        </tr>
+
+        <tr>
+            <td class="label">Email Address</td>
+            <td id="email">parent@example.com</td>
+        </tr>
+    </table>
+
+    <!-- Address -->
+    <div class="section-title">
+        3. ADDRESS INFORMATION
+    </div>
+
+    <table>
+        <tr>
+            <td class="label">Permanent Address</td>
+            <td id="address">
+                25, Green Park Colony,<br>
+                Lucknow, Uttar Pradesh - 226001
+            </td>
+        </tr>
+
+      
+    </table>
+
+    <!-- Academic Details -->
+    <div class="section-title">
+        4. ACADEMIC INFORMATION
+    </div>
+
+    <table>
+        <tr>
+            <td class="label">Previous School</td>
+            <td id="prv_school">XYZ Public School</td>
+        </tr>
+        <tr>
+            <td class="label">Admission Date</td>
+            <td id="admission_date">01/04/2026</td>
+        </tr>
+    </table>
+
+    <!-- Other Details -->
+    <div class="section-title">
+        5. OTHER INFORMATION
+    </div>
+
+    <table>
+        <tr>
+            <td class="label">Transport Required</td>
+            <td id="vehicle">Yes</td>
+        </tr>      
+
+        <tr>
+            <td class="label">Category</td>
+            <td id="cat">General</td>
+        </tr>
+    </table>
+
+    <!-- Declaration -->
+    <!-- <div class="declaration">
+        <strong>Declaration:</strong><br>
+        I hereby declare that the information provided above is true and
+        correct to the best of my knowledge. I understand that any incorrect
+        information may result in cancellation of the student's admission.
+    </div> -->
+
+    <!-- Signatures -->
+    <div class="signatures">
+
+        <div>
+            <div style="height:35px;"></div>
+            <div class="signature-line">
+                Parent / Guardian Signature
+            </div>
+        </div>
+
+        <div>
+            <div style="height:35px;"></div>
+            <div class="signature-line">
+                Office / Authorized Signature
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        This is a computer-generated student registration form document.not for legal use
+    </div>
+
+</div>
+
+</body>
+</html>

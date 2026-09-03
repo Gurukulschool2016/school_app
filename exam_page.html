@@ -1,0 +1,1995 @@
+
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Exam | School Admin</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f4f7fb;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #263238;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #0d6efd, #084298);
+      color: #fff;
+      padding: 24px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 25px rgba(13, 110, 253, .15);
+    }
+
+    .page-header h3 {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .page-header p {
+      margin: 5px 0 0;
+      opacity: .85;
+    }
+
+    .form-card {
+      background: #fff;
+      border: 0;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
+      overflow: hidden;
+    }
+
+    .card-title {
+      padding: 20px 24px;
+      border-bottom: 1px solid #edf0f4;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .form-label {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .form-control,
+    .form-select {
+      min-height: 46px;
+      border-radius: 10px;
+      border: 1px solid #dce1e7;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 .2rem rgba(13, 110, 253, .1);
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .input-group-text {
+      background: #f8f9fa;
+      border-color: #dce1e7;
+    }
+
+    .required {
+      color: #dc3545;
+    }
+
+    .exam-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.18);
+      margin-right: 12px;
+      font-size: 22px;
+    }
+
+    .summary-box {
+      background: #f8faff;
+      border: 1px solid #e1eaff;
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px dashed #dce3ef;
+      font-size: 14px;
+    }
+
+    .summary-item:last-child {
+      border-bottom: 0;
+    }
+
+    .summary-item span:last-child {
+      font-weight: 600;
+    }
+
+    .btn {
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-weight: 600;
+    }
+
+    .form-footer {
+      padding: 20px 24px;
+      border-top: 1px solid #edf0f4;
+      background: #fafbfc;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    @media (max-width: 767px) {
+      .container {
+        padding: 12px;
+      }
+
+      .page-header {
+        padding: 18px;
+        border-radius: 12px;
+      }
+
+      .page-header h3 {
+        font-size: 21px;
+      }
+
+      .card-body {
+        padding: 18px;
+      }
+
+      .form-footer {
+        padding: 16px 18px;
+        flex-direction: column-reverse;
+      }
+
+      .form-footer .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container py-4">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div class="d-flex align-items-center">
+      <div class="exam-icon">
+        <i class="bi bi-journal-plus"></i>
+      </div>
+      <div>
+        <h3>Create New Exam</h3>
+        <p>Schedule and configure a new school examination</p>
+      </div>
+    </div>
+  </div>
+
+  <form id="examForm">
+
+    <div class="row g-4">
+
+      <!-- Main Form -->
+      <div class="col-lg-8">
+
+        <!-- Basic Information -->
+        <div class="form-card mb-4">
+          <div class="card-title">
+            <i class="bi bi-info-circle me-2 text-primary"></i>
+            Basic Examination Information
+          </div>
+
+          <div class="card-body">
+
+            <div class="row g-3">
+
+              <div class="col-12">
+                <label class="form-label">
+                  Exam Name <span class="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="examName"
+                  placeholder="e.g. First Term Examination 2026"
+                  required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">
+                  Exam Type <span class="required">*</span>
+                </label>
+                <select class="form-select" id="examType" required>
+                  <option value="">Select Exam Type</option>
+                  <option>Unit Test</option>
+                  <option>Monthly Test</option>
+                  <option>Half Yearly</option>
+                  <option>Annual Examination</option>
+                  <option>Pre-Board</option>
+                  <option>Board Examination</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">
+                  Academic Year <span class="required">*</span>
+                </label>
+                <select class="form-select" required>
+                  <option value="">Select Academic Year</option>
+                  <option selected>2026-27</option>
+                  <option>2027-28</option>
+                  <option>2028-29</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">
+                  Class <span class="required">*</span>
+                </label>
+                <select class="form-select" required>
+                  <option value="">Select Class</option>
+                  <option>Nursery</option>
+                  <option>LKG</option>
+                  <option>UKG</option>
+                  <option>Class 1</option>
+                  <option>Class 2</option>
+                  <option>Class 3</option>
+                  <option>Class 4</option>
+                  <option>Class 5</option>
+                  <option>Class 6</option>
+                  <option>Class 7</option>
+                  <option>Class 8</option>
+                  <option>Class 9</option>
+                  <option>Class 10</option>
+                  <option>Class 11</option>
+                  <option>Class 12</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">
+                  Section <span class="required">*</span>
+                </label>
+                <select class="form-select" required>
+                  <option value="">Select Section</option>
+                  <option>All Sections</option>
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                  <option>D</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">
+                  Subject <span class="required">*</span>
+                </label>
+                <select class="form-select" required>
+                  <option value="">Select Subject</option>
+                  <option>English</option>
+                  <option>Hindi</option>
+                  <option>Mathematics</option>
+                  <option>Science</option>
+                  <option>Social Science</option>
+                  <option>Computer</option>
+                  <option>Physics</option>
+                  <option>Chemistry</option>
+                  <option>Biology</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">
+                  Exam Mode
+                </label>
+                <select class="form-select">
+                  <option>Offline / Written</option>
+                  <option>Online</option>
+                  <option>Offline + Online</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Schedule -->
+        <div class="form-card mb-4">
+          <div class="card-title">
+            <i class="bi bi-calendar-event me-2 text-primary"></i>
+            Examination Schedule
+          </div>
+
+          <div class="card-body">
+            <div class="row g-3">
+
+              <div class="col-md-6">
+                <label class="form-label">
+                  Exam Date <span class="required">*</span>
+                </label>
+                <input type="date" class="form-control" required>
+              </div>
+
+              <div class="col-md-3">
+                <label class="form-label">
+                  Start Time <span class="required">*</span>
+                </label>
+                <input type="time" class="form-control" required>
+              </div>
+
+              <div class="col-md-3">
+                <label class="form-label">
+                  End Time <span class="required">*</span>
+                </label>
+                <input type="time" class="form-control" required>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label">
+                  Duration
+                </label>
+                <div class="input-group">
+                  <input type="number" class="form-control" value="180" min="1">
+                  <span class="input-group-text">Minutes</span>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label">
+                  Total Marks <span class="required">*</span>
+                </label>
+                <input type="number" class="form-control" value="100" min="1" required>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label">
+                  Passing Marks <span class="required">*</span>
+                </label>
+                <input type="number" class="form-control" value="33" min="1" required>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="form-card">
+          <div class="card-title">
+            <i class="bi bi-card-text me-2 text-primary"></i>
+            Examination Instructions
+          </div>
+
+          <div class="card-body">
+            <label class="form-label">Instructions for Students</label>
+
+            <textarea
+              class="form-control"
+              placeholder="Enter examination instructions...">1. Bring your examination stationery.
+2. Reach the examination room 15 minutes before the exam.
+3. Mobile phones and electronic devices are not allowed.</textarea>
+          </div>
+
+          <div class="form-footer">
+            <button type="reset" class="btn btn-light border">
+              <i class="bi bi-arrow-counterclockwise me-1"></i>
+              Reset
+            </button>
+
+            <button type="button" class="btn btn-secondary">
+              <i class="bi bi-eye me-1"></i>
+              Preview
+            </button>
+
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-check-circle me-1"></i>
+              Create Exam
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Summary -->
+      <div class="col-lg-4">
+
+        <div class="form-card mb-4">
+          <div class="card-title">
+            <i class="bi bi-clipboard-check me-2 text-primary"></i>
+            Exam Summary
+          </div>
+
+          <div class="card-body">
+
+            <div class="summary-box">
+
+              <div class="summary-item">
+                <span>Exam</span>
+                <span id="summaryExam">Not set</span>
+              </div>
+
+              <div class="summary-item">
+                <span>Class</span>
+                <span>Not selected</span>
+              </div>
+
+              <div class="summary-item">
+                <span>Section</span>
+                <span>Not selected</span>
+              </div>
+
+              <div class="summary-item">
+                <span>Subject</span>
+                <span>Not selected</span>
+              </div>
+
+              <div class="summary-item">
+                <span>Total Marks</span>
+                <span>100</span>
+              </div>
+
+              <div class="summary-item">
+                <span>Passing Marks</span>
+                <span>33</span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Quick Tips -->
+        <div class="form-card">
+          <div class="card-title">
+            <i class="bi bi-lightbulb me-2 text-warning"></i>
+            Quick Tips
+          </div>
+
+          <div class="card-body">
+
+            <div class="d-flex gap-3 mb-3">
+              <i class="bi bi-check-circle-fill text-success"></i>
+              <small>Make sure the exam date and time are correct.</small>
+            </div>
+
+            <div class="d-flex gap-3 mb-3">
+              <i class="bi bi-check-circle-fill text-success"></i>
+              <small>Passing marks should be less than total marks.</small>
+            </div>
+
+            <div class="d-flex gap-3">
+              <i class="bi bi-check-circle-fill text-success"></i>
+              <small>Students will be notified after the exam is published.</small>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </form>
+</div>
+
+<script>
+  const examForm = document.getElementById("examForm");
+  const examName = document.getElementById("examName");
+  const summaryExam = document.getElementById("summaryExam");
+
+  examName.addEventListener("input", function () {
+    summaryExam.textContent = this.value || "Not set";
+  });
+
+  examForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    alert("Exam created successfully!");
+
+    // Here you can send the form data to PHP / ASP.NET / Node.js / API.
+  });
+</script>
+
+</body>
+</html>
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enter Marks - School Examination</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        background: #f4f7fb;
+        font-family: "Segoe UI", sans-serif;
+        color: #263238;
+    }
+
+    .topbar {
+        background: linear-gradient(135deg, #173b8f, #2864d7);
+        color: #fff;
+        padding: 16px 22px;
+        box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    }
+
+    .topbar h4 {
+        margin: 0;
+        font-weight: 700;
+    }
+
+    .topbar small {
+        opacity: .85;
+    }
+
+    .page-container {
+        max-width: 1400px;
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+    .card-box {
+        background: #fff;
+        border-radius: 16px;
+        border: 1px solid #e5eaf2;
+        box-shadow: 0 6px 25px rgba(30,55,90,.07);
+        padding: 22px;
+        margin-bottom: 20px;
+    }
+
+    .section-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 18px;
+    }
+
+    .form-label {
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .form-control,
+    .form-select {
+        min-height: 44px;
+        border-radius: 9px;
+        border: 1px solid #d9e0ea;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #2864d7;
+        box-shadow: 0 0 0 .2rem rgba(40,100,215,.12);
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+        border-radius: 12px;
+    }
+
+    .marks-table {
+        min-width: 950px;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+
+    .marks-table thead th {
+        background: #eef3fb;
+        color: #344563;
+        font-size: 13px;
+        white-space: nowrap;
+        padding: 14px 10px;
+        border-bottom: 2px solid #dce5f3;
+    }
+
+    .marks-table tbody td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .student-name {
+        font-weight: 600;
+    }
+
+    .roll-no {
+        color: #6c7890;
+        font-weight: 600;
+    }
+
+    .marks-input {
+        width: 90px;
+        text-align: center;
+        font-weight: 600;
+        min-height: 40px;
+    }
+
+    .total {
+        font-weight: 700;
+        color: #173b8f;
+    }
+
+    .percentage {
+        font-weight: 700;
+    }
+
+    .grade {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 42px;
+        padding: 6px 9px;
+        border-radius: 7px;
+        background: #e9f7ef;
+        color: #198754;
+        font-weight: 700;
+    }
+
+    .status {
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 20px;
+        background: #e8f7ee;
+        color: #198754;
+        font-weight: 600;
+    }
+
+    .action-bar {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        border-radius: 9px;
+        padding: 10px 18px;
+        font-weight: 600;
+    }
+
+    .btn-save {
+        background: #173b8f;
+        color: #fff;
+    }
+
+    .btn-save:hover {
+        background: #102d6e;
+        color: #fff;
+    }
+
+    .btn-print {
+        background: #f0f3f8;
+        color: #263238;
+    }
+
+    .summary {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .summary-box {
+        background: #fff;
+        border: 1px solid #e5eaf2;
+        border-radius: 14px;
+        padding: 18px;
+    }
+
+    .summary-box i {
+        font-size: 24px;
+        color: #2864d7;
+    }
+
+    .summary-box small {
+        display: block;
+        color: #7b879b;
+        margin-top: 7px;
+    }
+
+    .summary-box strong {
+        font-size: 22px;
+    }
+
+    @media (max-width: 768px) {
+        .page-container {
+            margin-top: 15px;
+        }
+
+        .card-box {
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .summary {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .topbar {
+            padding: 14px 16px;
+        }
+
+        .action-bar {
+            align-items: stretch;
+        }
+
+        .action-bar .btn {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .summary {
+            grid-template-columns: 1fr;
+        }
+
+        .summary-box {
+            padding: 14px;
+        }
+
+        .topbar h4 {
+            font-size: 18px;
+        }
+    }
+
+    @media print {
+        .no-print,
+        .topbar,
+        .filter-card,
+        .action-bar {
+            display: none !important;
+        }
+
+        body {
+            background: #fff;
+        }
+
+        .page-container {
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .card-box {
+            box-shadow: none;
+            border: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="topbar no-print">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h4>
+                    <i class="bi bi-pencil-square me-2"></i>
+                    Enter Marks
+                </h4>
+                <small>School Examination Management System</small>
+            </div>
+
+            <button class="btn btn-light btn-sm">
+                <i class="bi bi-arrow-left me-1"></i>
+                Back
+            </button>
+        </div>
+    </div>
+</header>
+
+<div class="page-container">
+
+    <!-- Filters -->
+    <div class="card-box filter-card">
+        <div class="section-title">
+            <i class="bi bi-funnel me-2 text-primary"></i>
+            Examination Details
+        </div>
+
+        <div class="row g-3">
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <label class="form-label">Academic Year</label>
+                <select class="form-select">
+                    <option>2026 - 2027</option>
+                    <option>2025 - 2026</option>
+                </select>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <label class="form-label">Examination</label>
+                <select class="form-select">
+                    <option>First Term Examination</option>
+                    <option>Half Yearly Examination</option>
+                    <option>Annual Examination</option>
+                </select>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-2">
+                <label class="form-label">Class</label>
+                <select class="form-select">
+                    <option>Class 10</option>
+                    <option>Class 9</option>
+                    <option>Class 8</option>
+                    <option>Class 7</option>
+                </select>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-2">
+                <label class="form-label">Section</label>
+                <select class="form-select">
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
+            </div>
+
+            <div class="col-12 col-lg-2">
+                <label class="form-label">Subject</label>
+                <select class="form-select">
+                    <option>Mathematics</option>
+                    <option>English</option>
+                    <option>Science</option>
+                    <option>Social Science</option>
+                    <option>Hindi</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary no-print">
+
+        <div class="summary-box">
+            <i class="bi bi-people"></i>
+            <small>Total Students</small>
+            <strong id="studentCount">5</strong>
+        </div>
+
+        <div class="summary-box">
+            <i class="bi bi-check-circle"></i>
+            <small>Marks Entered</small>
+            <strong id="enteredCount">0</strong>
+        </div>
+
+        <div class="summary-box">
+            <i class="bi bi-trophy"></i>
+            <small>Passed</small>
+            <strong id="passedCount">0</strong>
+        </div>
+
+        <div class="summary-box">
+            <i class="bi bi-x-circle"></i>
+            <small>Failed</small>
+            <strong id="failedCount">0</strong>
+        </div>
+
+    </div>
+
+    <!-- Marks Table -->
+    <div class="card-box">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="section-title mb-0">
+                <i class="bi bi-table me-2 text-primary"></i>
+                Student Marks
+            </div>
+
+            <span class="status">
+                Maximum Marks: 100
+            </span>
+        </div>
+
+        <div class="table-wrapper">
+
+            <table class="table marks-table" id="marksTable">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Roll No.</th>
+                        <th>Student Name</th>
+                        <th>Marks</th>
+                        <th>Total</th>
+                        <th>Percentage</th>
+                        <th>Grade</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>1</td>
+                        <td class="roll-no">101</td>
+                        <td class="student-name">Aarav Sharma</td>
+                        <td>
+                            <input type="number"
+                                   class="form-control marks-input marks"
+                                   min="0" max="100"
+                                   placeholder="0">
+                        </td>
+                        <td class="total">0 / 100</td>
+                        <td class="percentage">0%</td>
+                        <td><span class="grade">-</span></td>
+                        <td><span class="result">-</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td class="roll-no">102</td>
+                        <td class="student-name">Ananya Singh</td>
+                        <td>
+                            <input type="number"
+                                   class="form-control marks-input marks"
+                                   min="0" max="100"
+                                   placeholder="0">
+                        </td>
+                        <td class="total">0 / 100</td>
+                        <td class="percentage">0%</td>
+                        <td><span class="grade">-</span></td>
+                        <td><span class="result">-</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td class="roll-no">103</td>
+                        <td class="student-name">Aditya Verma</td>
+                        <td>
+                            <input type="number"
+                                   class="form-control marks-input marks"
+                                   min="0" max="100"
+                                   placeholder="0">
+                        </td>
+                        <td class="total">0 / 100</td>
+                        <td class="percentage">0%</td>
+                        <td><span class="grade">-</span></td>
+                        <td><span class="result">-</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td class="roll-no">104</td>
+                        <td class="student-name">Priya Gupta</td>
+                        <td>
+                            <input type="number"
+                                   class="form-control marks-input marks"
+                                   min="0" max="100"
+                                   placeholder="0">
+                        </td>
+                        <td class="total">0 / 100</td>
+                        <td class="percentage">0%</td>
+                        <td><span class="grade">-</span></td>
+                        <td><span class="result">-</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td class="roll-no">105</td>
+                        <td class="student-name">Rahul Kumar</td>
+                        <td>
+                            <input type="number"
+                                   class="form-control marks-input marks"
+                                   min="0" max="100"
+                                   placeholder="0">
+                        </td>
+                        <td class="total">0 / 100</td>
+                        <td class="percentage">0%</td>
+                        <td><span class="grade">-</span></td>
+                        <td><span class="result">-</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="card-box action-bar no-print">
+
+        <div>
+            <strong>Marks Entry</strong>
+            <div class="text-muted small">
+                Passing marks: 33 / 100
+            </div>
+        </div>
+
+        <div class="d-flex gap-2 flex-wrap">
+
+            <button class="btn btn-print" onclick="window.print()">
+                <i class="bi bi-printer me-1"></i>
+                Print
+            </button>
+
+            <button class="btn btn-outline-secondary" onclick="clearMarks()">
+                <i class="bi bi-arrow-counterclockwise me-1"></i>
+                Clear
+            </button>
+
+            <button class="btn btn-save" onclick="saveMarks()">
+                <i class="bi bi-check-lg me-1"></i>
+                Save Marks
+            </button>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+const inputs = document.querySelectorAll(".marks");
+
+inputs.forEach(input => {
+    input.addEventListener("input", function () {
+
+        let value = Number(this.value);
+
+        if (value < 0) this.value = 0;
+        if (value > 100) this.value = 100;
+
+        updateRow(this.closest("tr"));
+        updateSummary();
+    });
+});
+
+function updateRow(row) {
+
+    const input = row.querySelector(".marks");
+    const total = row.querySelector(".total");
+    const percentage = row.querySelector(".percentage");
+    const grade = row.querySelector(".grade");
+    const result = row.querySelector(".result");
+
+    let marks = Number(input.value) || 0;
+
+    total.textContent = marks + " / 100";
+    percentage.textContent = marks + "%";
+
+    let gradeText = "-";
+
+    if (marks >= 90) {
+        gradeText = "A+";
+    } else if (marks >= 80) {
+        gradeText = "A";
+    } else if (marks >= 70) {
+        gradeText = "B+";
+    } else if (marks >= 60) {
+        gradeText = "B";
+    } else if (marks >= 50) {
+        gradeText = "C";
+    } else if (marks >= 33) {
+        gradeText = "D";
+    } else if (input.value !== "") {
+        gradeText = "F";
+    }
+
+    grade.textContent = gradeText;
+
+    if (input.value === "") {
+        result.textContent = "-";
+        result.className = "result";
+    } else if (marks >= 33) {
+        result.textContent = "PASS";
+        result.className = "result text-success fw-bold";
+    } else {
+        result.textContent = "FAIL";
+        result.className = "result text-danger fw-bold";
+    }
+}
+
+function updateSummary() {
+
+    let entered = 0;
+    let passed = 0;
+    let failed = 0;
+
+    document.querySelectorAll(".marks").forEach(input => {
+
+        if (input.value !== "") {
+
+            entered++;
+
+            let marks = Number(input.value);
+
+            if (marks >= 33) {
+                passed++;
+            } else {
+                failed++;
+            }
+        }
+    });
+
+    document.getElementById("enteredCount").textContent = entered;
+    document.getElementById("passedCount").textContent = passed;
+    document.getElementById("failedCount").textContent = failed;
+}
+
+function clearMarks() {
+
+    if (!confirm("Are you sure you want to clear all entered marks?")) {
+        return;
+    }
+
+    document.querySelectorAll(".marks").forEach(input => {
+        input.value = "";
+        updateRow(input.closest("tr"));
+    });
+
+    updateSummary();
+}
+
+function saveMarks() {
+
+    let entered = 0;
+
+    document.querySelectorAll(".marks").forEach(input => {
+        if (input.value !== "") {
+            entered++;
+        }
+    });
+
+    if (entered === 0) {
+        alert("Please enter marks before saving.");
+        return;
+    }
+
+    alert("Marks saved successfully!");
+}
+
+</script>
+
+</body>
+</html>
+```
+# Responsive School Result Page
+
+Use this as a complete standalone `result.html` file:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Annual Result</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f1f5f9;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #1e293b;
+        }
+
+        .result-wrapper {
+            max-width: 1050px;
+            margin: 30px auto;
+            padding: 15px;
+        }
+
+        .result-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,.08);
+        }
+
+        /* Header */
+        .school-header {
+            padding: 25px;
+            text-align: center;
+            border-bottom: 3px solid #2563eb;
+        }
+
+        .school-logo {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 8px;
+        }
+
+        .school-header h1 {
+            font-size: 28px;
+            margin: 5px 0;
+            font-weight: 800;
+            color: #1d4ed8;
+        }
+
+        .school-header h5 {
+            margin: 5px 0;
+            font-weight: 600;
+        }
+
+        .school-header p {
+            margin: 3px 0;
+            color: #64748b;
+        }
+
+        .result-title {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 25px;
+            background: #2563eb;
+            color: #fff;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        /* Student information */
+        .section-title {
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-weight: 700;
+            padding: 10px 15px;
+            border-left: 4px solid #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .student-section {
+            padding: 20px 25px;
+        }
+
+        .student-photo {
+            width: 105px;
+            height: 125px;
+            object-fit: cover;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 9px;
+        }
+
+        .info-label {
+            width: 125px;
+            font-weight: 700;
+            color: #475569;
+        }
+
+        .info-value {
+            color: #0f172a;
+        }
+
+        /* Marks */
+        .marks-section {
+            padding: 0 25px 20px;
+        }
+
+        .table-responsive {
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            overflow-x: auto;
+        }
+
+        .marks-table {
+            width: 100%;
+            min-width: 700px;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        .marks-table th {
+            background: #1d4ed8;
+            color: #fff;
+            text-align: center;
+            padding: 11px 8px;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .marks-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 8px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .marks-table td:first-child,
+        .marks-table td:nth-child(2) {
+            text-align: left;
+        }
+
+        .marks-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .pass {
+            color: #15803d;
+            font-weight: bold;
+        }
+
+        /* Summary */
+        .summary-section {
+            padding: 0 25px 20px;
+        }
+
+        .summary-box {
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 7px 0;
+            border-bottom: 1px dashed #cbd5e1;
+        }
+
+        .summary-item:last-child {
+            border-bottom: 0;
+        }
+
+        .summary-item strong {
+            color: #334155;
+        }
+
+        .percentage {
+            font-size: 25px;
+            color: #1d4ed8;
+            font-weight: 800;
+        }
+
+        .result-pass {
+            display: inline-block;
+            background: #dcfce7;
+            color: #15803d;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        /* Attendance */
+        .attendance {
+            padding: 0 25px 20px;
+        }
+
+        .attendance-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        /* Remarks */
+        .remarks {
+            margin: 0 25px 20px;
+            padding: 15px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+        }
+
+        /* Signatures */
+        .signature-section {
+            padding: 35px 25px 25px;
+        }
+
+        .signature {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .signature-line {
+            width: 150px;
+            margin: 0 auto 8px;
+            border-top: 1px solid #475569;
+        }
+
+        .signature small {
+            color: #64748b;
+        }
+
+        /* Footer */
+        .result-footer {
+            padding: 15px 25px;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        /* Buttons */
+        .action-buttons {
+            max-width: 1050px;
+            margin: 0 auto 20px;
+            padding: 0 15px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        /* Mobile */
+        @media (max-width: 767px) {
+
+            .result-wrapper {
+                margin: 10px auto;
+                padding: 8px;
+            }
+
+            .result-card {
+                border-radius: 8px;
+            }
+
+            .school-header {
+                padding: 18px 12px;
+            }
+
+            .school-logo {
+                width: 65px;
+                height: 65px;
+            }
+
+            .school-header h1 {
+                font-size: 21px;
+            }
+
+            .school-header h5 {
+                font-size: 14px;
+            }
+
+            .school-header p {
+                font-size: 11px;
+            }
+
+            .result-title {
+                font-size: 14px;
+                padding: 7px 18px;
+            }
+
+            .student-section,
+            .marks-section,
+            .summary-section,
+            .attendance {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .section-title {
+                font-size: 14px;
+            }
+
+            .student-photo {
+                width: 80px;
+                height: 95px;
+            }
+
+            .info-label {
+                width: 105px;
+                font-size: 12px;
+            }
+
+            .info-value {
+                font-size: 12px;
+            }
+
+            .info-row {
+                margin-bottom: 7px;
+            }
+
+            .summary-box {
+                margin-bottom: 12px;
+            }
+
+            .remarks {
+                margin-left: 12px;
+                margin-right: 12px;
+            }
+
+            .signature-section {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .signature {
+                margin-top: 25px;
+                margin-bottom: 20px;
+            }
+
+            .action-buttons {
+                padding: 0 10px;
+            }
+        }
+
+        /* Print */
+        @media print {
+
+            body {
+                background: #fff;
+            }
+
+            .result-wrapper {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .result-card {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .action-buttons {
+                display: none !important;
+            }
+
+            .school-header {
+                padding: 15px;
+            }
+
+            .marks-table th {
+                background: #1d4ed8 !important;
+                color: #fff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .section-title {
+                background: #eff6ff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Action Buttons -->
+<div class="action-buttons mt-3">
+    <button class="btn btn-primary" onclick="window.print()">
+        🖨 Print Result
+    </button>
+
+    <button class="btn btn-outline-secondary" onclick="window.history.back()">
+        ← Back
+    </button>
+</div>
+
+<div class="result-wrapper">
+
+    <div class="result-card">
+
+        <!-- School Header -->
+        <div class="school-header">
+
+            <img
+                class="school-logo"
+                src="https://via.placeholder.com/100"
+                alt="School Logo">
+
+            <h1>GURUKUL PUBLIC SCHOOL</h1>
+
+            <h5>Affiliated to CBSE, New Delhi</h5>
+
+            <p>123 School Road, Lucknow, Uttar Pradesh - 226001</p>
+
+            <p>
+                Phone: +91 98765 43210 |
+                Email: info@gurukulschool.com
+            </p>
+
+            <div class="result-title">
+                ANNUAL EXAMINATION RESULT 2025-26
+            </div>
+
+        </div>
+
+        <!-- Student Information -->
+        <div class="student-section">
+
+            <div class="section-title">
+                Student Information
+            </div>
+
+            <div class="row align-items-center">
+
+                <div class="col-md-10">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <div class="info-row">
+                                <div class="info-label">Student Name:</div>
+                                <div class="info-value">Aarav Sharma</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Father's Name:</div>
+                                <div class="info-value">Rajesh Sharma</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Mother's Name:</div>
+                                <div class="info-value">Priya Sharma</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Date of Birth:</div>
+                                <div class="info-value">15 April 2013</div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="info-row">
+                                <div class="info-label">Class:</div>
+                                <div class="info-value">VI - A</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Roll No:</div>
+                                <div class="info-value">1025</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Admission No:</div>
+                                <div class="info-value">GPS20210045</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Academic Year:</div>
+                                <div class="info-value">2025-26</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-2 text-center mt-3 mt-md-0">
+
+                    <img
+                        class="student-photo"
+                        src="https://via.placeholder.com/105x125"
+                        alt="Student Photo">
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Marks -->
+        <div class="marks-section">
+
+            <div class="section-title">
+                Scholastic Areas / Subject-wise Performance
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="marks-table">
+
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Subject</th>
+                            <th>Periodic Test</th>
+                            <th>Half Yearly</th>
+                            <th>Annual Exam</th>
+                            <th>Total</th>
+                            <th>Grade</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>1</td>
+                            <td>English</td>
+                            <td>18</td>
+                            <td>82</td>
+                            <td>88</td>
+                            <td>188 / 200</td>
+                            <td>A1</td>
+                            <td class="pass">PASS</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Hindi</td>
+                            <td>17</td>
+                            <td>78</td>
+                            <td>85</td>
+                            <td>180 / 200</td>
+                            <td>A1</td>
+                            <td class="pass">PASS</td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>Mathematics</td>
+                            <td>19</td>
+                            <td>88</td>
+                            <td>91</td>
+                            <td>198 / 200</td>
+                            <td>A1</td>
+                            <td class="pass">PASS</td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td>Science</td>
+                            <td>18</td>
+                            <td>84</td>
+                            <td>89</td>
+                            <td>191 / 200</td>
+                            <td>A1</td>
+                            <td class="pass">PASS</td>
+                        </tr>
+
+                        <tr>
+                            <td>5</td>
+                            <td>Social Science</td>
+                            <td>17</td>
+                            <td>80</td>
+                            <td>86</td>
+                            <td>183 / 200</td>
+                            <td>A1</td>
+                            <td class="pass">PASS</td>
+                        </tr>
+
+                        <tr>
+                            <td>6</td>
+                            <td>Computer</td>
+                            <td>20</td>
+                            <td>90</td>
+                            <td>94</td>
+                            <td>204 / 200</td>
+                            <td>A1</td>
+                            <td class="pass">PASS</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="summary-section">
+
+            <div class="section-title">
+                Result Summary
+            </div>
+
+            <div class="row g-3">
+
+                <div class="col-md-6">
+
+                    <div class="summary-box">
+
+                        <div class="summary-item">
+                            <strong>Total Marks</strong>
+                            <span>1144 / 1200</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <strong>Percentage</strong>
+                            <span class="percentage">95.33%</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <strong>Overall Grade</strong>
+                            <span><strong>A1</strong></span>
+                        </div>
+
+                        <div class="summary-item">
+                            <strong>Class Position</strong>
+                            <span>02</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="summary-box">
+
+                        <div class="summary-item">
+                            <strong>Final Result</strong>
+                            <span class="result-pass">PASS</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <strong>Promotion</strong>
+                            <span>Promoted to Class VII</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <strong>Performance</strong>
+                            <span>Excellent</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <strong>Result Date</strong>
+                            <span>28 March 2026</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Attendance -->
+        <div class="attendance">
+
+            <div class="section-title">
+                Attendance
+            </div>
+
+            <div class="attendance-box">
+
+                <div class="row text-center">
+
+                    <div class="col-6 col-md-3">
+                        <strong>Working Days</strong>
+                        <br>
+                        220
+                    </div>
+
+                    <div class="col-6 col-md-3">
+                        <strong>Present</strong>
+                        <br>
+                        211
+                    </div>
+
+                    <div class="col-6 col-md-3 mt-3 mt-md-0">
+                        <strong>Absent</strong>
+                        <br>
+                        09
+                    </div>
+
+                    <div class="col-6 col-md-3 mt-3 mt-md-0">
+                        <strong>Attendance</strong>
+                        <br>
+                        95.91%
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Remarks -->
+        <div class="remarks">
+
+            <strong>Class Teacher's Remarks:</strong>
+
+            <p class="mb-0 mt-2">
+                Excellent academic performance. The student has shown
+                consistent progress throughout the academic year.
+                Keep up the good work.
+            </p>
+
+        </div>
+
+        <!-- Signatures -->
+        <div class="signature-section">
+
+            <div class="row">
+
+                <div class="col-6 col-md-3">
+                    <div class="signature">
+                        <div class="signature-line"></div>
+                        <strong>Class Teacher</strong>
+                        <br>
+                        <small>Signature</small>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="signature">
+                        <div class="signature-line"></div>
+                        <strong>Exam In-charge</strong>
+                        <br>
+                        <small>Signature</small>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="signature">
+                        <div class="signature-line"></div>
+                        <strong>Principal</strong>
+                        <br>
+                        <small>Signature & Seal</small>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="signature">
+                        <div class="signature-line"></div>
+                        <strong>Parent</strong>
+                        <br>
+                        <small>Signature</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="result-footer">
+
+            This is a computer-generated result.
+            No signature is required unless specified by the school.
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    // Print result
+    function printResult() {
+        window.print();
+    }
+</script>
+
+</body>
+</html>
+```
+
